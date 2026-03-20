@@ -1,0 +1,16 @@
+.DS_Store
+.vscode/
+__pycache__/
+*.py[cod]
+*.aux
+*.log
+.env
+.env*
+.idea/
+*.out
+*.class
+build/
+dist/
+*.tgz
+.venv/
+node_modules/
