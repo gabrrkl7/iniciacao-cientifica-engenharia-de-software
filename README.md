@@ -9,11 +9,13 @@ Organizar a proposta final do semestre em um repositório técnico-acadêmico co
 ## Estrutura do Repositório
 
 ```text
+/docs
+/diagramas
+/publicacao
+/artigos
 /referencias
-/arquitetura
-/documentacao
-/imagens
-/apresentacao
+/src
+/data
 README.md
 ```
 
@@ -23,6 +25,10 @@ README.md
 - `diagramas/arquitetura/descricao-arquitetura.md`: consolidação arquitetural do sistema.
 - `diagramas/arquitetura/diagrama-mermaid.md`: diagrama em Mermaid com visão contextual, de containers, fluxo, escalabilidade, segurança e CI/CD.
 - `referencias/bibliografia/REFERENCIAS-ABNT.md`: referências acadêmicas e técnicas em formato ABNT.
+- `publicacao/tarefa07-congresso.md`: registro da Tarefa 07, checklist de prazos e mensagem para revisão.
+- `artigos/resumo-expandido.pdf`: resumo expandido preparado para o III Congresso UniSENAI-SP.
+- `artigos/resumo-expandido.docx`: versão editável do resumo expandido.
+- `artigos/resumo-expandido.md`: fonte textual do resumo expandido.
 - `METODO-DE-TRABALHO.md`: método de trabalho adotado no projeto.
 
 ## Tecnologias e Conceitos
@@ -52,6 +58,14 @@ A solução segue uma abordagem cloud-native, com front-end desacoplado, backend
 - Shafiei et al., *Serverless Computing: A Survey of Opportunities, Challenges and Applications*
 - AWS Well-Architected Framework
 - AWS Lambda Developer Guide
+
+## Tarefa 07 - Congresso UniSENAI-SP
+
+O resumo expandido foi preparado como trabalho em desenvolvimento, sem inventar resultados experimentais. O arquivo final contém contexto, problema, objetivos, justificativa, revisão de literatura, metodologia, resultados parciais, discussões, conclusão preliminar e referências.
+
+O prazo interno para envio aos orientadores Deivison Shindi Takatu e Glauco Todesco é `18/09/2026`. O prazo oficial de submissão informado na atividade é `25/09/2026`. A inscrição como apresentador, presencial ou online, deve ser realizada pelo autor na plataforma do evento até `16/10/2026`.
+
+Consulte [publicacao/tarefa07-congresso.md](publicacao/tarefa07-congresso.md) para o checklist completo e a mensagem de revisão.
 
 ## Organização das Pastas
 
