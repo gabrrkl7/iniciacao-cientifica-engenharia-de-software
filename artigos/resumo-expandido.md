@@ -40,7 +40,7 @@ A relevância do estudo decorre da necessidade de orientar decisões arquitetura
 
 Microsserviços são uma abordagem para decompor uma aplicação em serviços independentes, orientados a capacidades de negócio e com possibilidade de implantação autônoma. Newman [1] destaca que a definição das fronteiras deve considerar o domínio e o contexto da organização, evitando a criação de um monólito distribuído. O estudo de mapeamento sistemático de Cerny et al. [2] identifica como benefícios recorrentes a evolução independente, a escalabilidade seletiva e a autonomia das equipes, mas registra desafios relacionados à integração, aos testes e à observabilidade.
 
-A computação serverless desloca para o provedor parte significativa da administração da infraestrutura. Revisões sobre o paradigma mostram que funções sob demanda são adequadas a eventos, APIs e cargas variáveis, especialmente quando o tempo de execução é limitado e a elasticidade é prioritária [3][4]. Entretanto, limitações como inicialização a frio, restrições de execução, dependência do provedor e dificuldade de depuração distribuída precisam ser consideradas antes da escolha tecnológica [5][6]. Por esse motivo, este trabalho não propõe serverless como solução universal, mas como uma das estratégias de processamento.
+A computação serverless desloca para o provedor parte significativa da administração da infraestrutura. Revisões sobre o paradigma mostram que funções sob demanda são adequadas a eventos, APIs e cargas variáveis, especialmente quando o tempo de execução é limitado e a elasticidade é prioritária [3][4]. Estudos de adoção industrial também discutem impactos econômicos e arquiteturais desse modelo [15]. Entretanto, limitações como inicialização a frio, restrições de execução, dependência do provedor e dificuldade de depuração distribuída precisam ser consideradas antes da escolha tecnológica [5][6]. Por esse motivo, este trabalho não propõe serverless como solução universal, mas como uma das estratégias de processamento.
 
 A combinação de funções e contêineres permite adequar o modelo de execução ao perfil de cada componente. O uso de contêineres favorece portabilidade e controle sobre dependências, enquanto funções serverless simplificam rotinas reativas e de curta duração [7]. A comunicação assíncrona por filas e tópicos pode reduzir a dependência temporal entre produtor e consumidor, absorver picos de demanda e melhorar a resiliência, desde que sejam tratados idempotência, reprocessamento e mensagens não processáveis.
 
@@ -50,19 +50,31 @@ Segurança e observabilidade são requisitos estruturais, e não complementos ad
 
 Esta pesquisa é aplicada, exploratória e de abordagem qualitativa. O objeto de estudo é uma proposta arquitetural para sistemas escaláveis em nuvem. O trabalho foi organizado em ciclos de investigação e documentação, combinando revisão bibliográfica, análise de requisitos e modelagem de software.
 
-Inicialmente, foram selecionadas referências sobre microsserviços, serverless, segurança e arquitetura em nuvem. Em seguida, os problemas observados em aplicações monolíticas foram relacionados a requisitos não funcionais: escalabilidade horizontal, disponibilidade, manutenibilidade, segurança, observabilidade e controle de custos. A partir dessa relação, foi elaborada uma arquitetura em camadas, com front-end desacoplado, API Gateway, autenticação, processamento síncrono e assíncrono, persistência híbrida e monitoramento.
+Inicialmente, foram selecionadas referências sobre microsserviços, serverless, segurança e arquitetura em nuvem. Em seguida, os problemas observados em aplicações monolíticas foram relacionados a requisitos não funcionais: escalabilidade horizontal, disponibilidade, manutenibilidade, segurança, observabilidade e controle de custos. A partir dessa relação, foi elaborada uma arquitetura em camadas, com front-end desacoplado, API Gateway, autenticação, processamento síncrono e assíncrono, persistência híbrida e monitoramento. A organização da investigação como estudo aplicado e conceitual dialoga com trabalhos recentes desenvolvidos no contexto do ensino de Engenharia de Software [14].
 
 A modelagem foi documentada em diagramas Mermaid e em uma descrição técnica dos componentes. As decisões foram registradas por justificativas, riscos e alternativas, permitindo rastrear a relação entre problema, requisito e tecnologia. A validação realizada nesta fase é documental e por inspeção de coerência. A validação experimental, com protótipo funcional, testes de carga e coleta de métricas como latência, taxa de erro e throughput, permanece como etapa futura.
 
 ## 4 RESULTADOS E DISCUSSÕES
 
-Os resultados parciais consistem em um artefato arquitetural consolidado e na organização dos materiais de pesquisa. A camada de apresentação utiliza uma aplicação web desacoplada, distribuída por CDN e armazenamento de objetos. O API Gateway funciona como ponto de entrada para as chamadas da aplicação e integra autenticação e controle de tráfego. Essa separação reduz a dependência direta do cliente em relação à implementação interna dos serviços [9][10].
+Os resultados parciais consistem em um artefato arquitetural consolidado e na organização dos materiais de pesquisa. A camada de apresentação utiliza uma aplicação web desacoplada, distribuída por Amazon CloudFront e armazenamento de objetos. O API Gateway funciona como ponto de entrada para as chamadas da aplicação e integra autenticação e controle de tráfego. Essa separação reduz a dependência direta do cliente em relação à implementação interna dos serviços [9][10][13].
 
-Na camada de processamento, a solução combina funções Lambda e microsserviços em ECS/Fargate. Funções de curta duração, integrações e consumidores de eventos podem ser implementados de forma serverless. Serviços que exigem maior controle de runtime, processamento prolongado ou dependências específicas podem ser executados em contêineres. Essa decisão híbrida é um resultado importante da análise, pois reconhece que a arquitetura deve se adaptar ao perfil da carga de trabalho, e não o contrário [3][7].
+Na camada de processamento, a solução combina funções AWS Lambda [11] e microsserviços em ECS/Fargate. Funções de curta duração, integrações e consumidores de eventos podem ser implementados de forma serverless. Serviços que exigem maior controle de runtime, processamento prolongado ou dependências específicas podem ser executados em contêineres. Essa decisão híbrida é um resultado importante da análise, pois reconhece que a arquitetura deve se adaptar ao perfil da carga de trabalho, e não o contrário [3][7].
 
 Na persistência, o RDS PostgreSQL é destinado a dados relacionais e transações que exigem consistência, enquanto o DynamoDB é indicado para dados semiestruturados, sessões e fluxos de alta variabilidade. Filas e tópicos SQS/SNS são empregados para desacoplar processamento assíncrono. A proposta exige que cada serviço seja responsável por suas próprias regras de acesso aos dados e que os eventos tenham identificadores idempotentes. Essas restrições são necessárias para evitar inconsistências e efeitos duplicados durante retentativas.
 
-Em segurança, foram definidos autenticação centralizada, autorização baseada em tokens, criptografia em trânsito, armazenamento protegido e sub-redes privadas para os componentes de dados. Em observabilidade, foram definidos logs estruturados, métricas de operação, alertas e rastreamento distribuído. A arquitetura também prevê escalabilidade horizontal, redundância entre zonas de disponibilidade, retentativas com backoff e limites de concorrência. Esses resultados são decisões de projeto, não medições de desempenho; portanto, sua efetividade ainda precisa ser avaliada empiricamente.
+Em segurança, foram definidos autenticação centralizada com Amazon Cognito [12], autorização baseada em tokens, criptografia em trânsito, armazenamento protegido e sub-redes privadas para os componentes de dados. Em observabilidade, foram definidos logs estruturados, métricas de operação, alertas e rastreamento distribuído. A arquitetura também prevê escalabilidade horizontal, redundância entre zonas de disponibilidade, retentativas com backoff e limites de concorrência. O Quadro 1 explicita a relação entre requisitos, decisões tecnológicas e a validação prevista.
+
+**Quadro 1 - Matriz de decisão tecnológica da arquitetura proposta**
+
+| Requisito | Decisão arquitetural | Justificativa e validação prevista |
+|---|---|---|
+| Escalabilidade | Lambda e ECS/Fargate com expansão horizontal | Adequar ao perfil da carga; validar latência, erros e throughput. |
+| Segurança | Cognito, tokens, TLS, IAM e sub-redes privadas | Aplicar autenticação, autorização e isolamento; validar configuração e ameaças. |
+| Persistência | RDS PostgreSQL e DynamoDB | Separar dados transacionais e semiestruturados; validar consistência e concorrência. |
+| Observabilidade | CloudWatch, logs, métricas e rastreamento | Detectar falhas e acompanhar indicadores; validar com injeção de falhas. |
+| Resiliência | SQS/SNS, retentativas, backoff e idempotência | Desacoplar consumidores; validar reprocessamento e mensagens não processáveis. |
+
+Os resultados apresentados são decisões de projeto, não medições de desempenho; portanto, sua efetividade ainda precisa ser avaliada empiricamente.
 
 As discussões realizadas até o momento evidenciam um trade-off central: a arquitetura distribuída aumenta a capacidade de escalar componentes de forma independente, mas amplia o número de pontos de falha e a necessidade de governança. A adoção de serviços gerenciados pode reduzir o trabalho de infraestrutura, porém cria dependências de configuração, custos variáveis e possível acoplamento ao provedor. Dessa forma, a solução deve ser validada com cenários controlados antes de uma eventual implementação produtiva.
 
@@ -90,15 +102,19 @@ Como conclusão preliminar, a combinação de modelos de execução e serviços 
 
 [8] INDRASIRI, K.; SIRIWARDENA, P. *Microservices Security in Action*. Shelter Island: Manning Publications, 2020.
 
-[9] AWS. AWS Well-Architected Framework. Disponível em: https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html. Acesso em: 17 set. 2026.
+[9] AWS. AWS Well-Architected Framework. Disponível em: https://docs.aws.amazon.com/wellarchitected/. Acesso em: 17 set. 2026.
 
-[10] AWS. Amazon API Gateway Developer Guide. Disponível em: https://docs.aws.amazon.com/apigateway/latest/developerguide/welcome.html. Acesso em: 17 set. 2026.
+[10] AWS. Amazon API Gateway Developer Guide. Disponível em: https://docs.aws.amazon.com/apigateway/. Acesso em: 17 set. 2026.
 
-[11] AWS. AWS Lambda Developer Guide. Disponível em: https://docs.aws.amazon.com/lambda/latest/dg/welcome.html. Acesso em: 17 set. 2026.
+[11] AWS. AWS Lambda Developer Guide. Disponível em: https://docs.aws.amazon.com/lambda/. Acesso em: 17 set. 2026.
 
-[12] AWS. Amazon Cognito Developer Guide. Disponível em: https://docs.aws.amazon.com/cognito/latest/developerguide/what-is-amazon-cognito.html. Acesso em: 17 set. 2026.
+[12] AWS. Amazon Cognito Developer Guide. Disponível em: https://docs.aws.amazon.com/cognito/. Acesso em: 17 set. 2026.
 
-[13] AWS. Amazon CloudFront Developer Guide. Disponível em: https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Introduction.html. Acesso em: 17 set. 2026.
+[13] AWS. Amazon CloudFront Developer Guide. Disponível em: https://docs.aws.amazon.com/cloudfront/. Acesso em: 17 set. 2026.
+
+[14] SILVA, L. M. L. da; SOUZA, A. C. A.; TODESCO, G.; SILVA, C. A.; SILVA, G. C. da; TAKATU, D. S. Integração entre a Metodologia SENAI de Educação Profissional (MSEP) e a inteligência artificial no ensino de engenharia de software: um modelo conceitual. *Revista Científica SENAI-SP - Educação, Tecnologia e Inovação*, v. 4, n. 1, p. 139-157, 2026. DOI: 10.62899/rcs.v4i1.266. Acesso em: 23 set. 2026.
+
+[15] ADZIC, G.; CHATLEY, R. Serverless computing: economic and architectural impact. In: *ESEC/FSE 2017*. New York: ACM, 2017. p. 884-889. DOI: 10.1145/3106237.3117767.
 
 ## AGRADECIMENTOS
 
