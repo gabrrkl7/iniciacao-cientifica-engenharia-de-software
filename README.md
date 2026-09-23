@@ -29,6 +29,7 @@ README.md
 - `artigos/resumo-expandido.pdf`: resumo expandido preparado para o III Congresso UniSENAI-SP.
 - `artigos/resumo-expandido.docx`: versão editável do resumo expandido.
 - `artigos/resumo-expandido.md`: fonte textual do resumo expandido.
+- `artigos/template-congresso-unisenai.docx`: template oficial utilizado na formatação do resumo expandido.
 - `METODO-DE-TRABALHO.md`: método de trabalho adotado no projeto.
 
 ## Tecnologias e Conceitos

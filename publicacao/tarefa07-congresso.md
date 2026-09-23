@@ -13,7 +13,7 @@
 - **Arquivo editável:** `artigos/resumo-expandido.docx`.
 - **Arquivo para revisão e submissão:** `artigos/resumo-expandido.pdf`.
 - **Versão em texto:** `artigos/resumo-expandido.md`.
-- **Template de referência:** Template - III Congresso UniSENAI - Resumo Expandido.docx, disponibilizado no repositório da disciplina.
+- **Template utilizado:** `artigos/template-congresso-unisenai.docx`, cópia do modelo oficial disponibilizado no repositório da disciplina.
 
 ## Orientadores
 
@@ -45,10 +45,11 @@ As observações foram identificadas nos comentários do arquivo `Gabriel.pdf` d
 
 ## Arquivos corrigidos
 
-- `artigos/resumo-expandido.pdf`: versão final para revisão/submissão, com 6 páginas A4.
+- `artigos/resumo-expandido.pdf`: versão final para revisão/submissão, com 5 páginas A4 no template oficial.
 - `artigos/resumo-expandido.docx`: versão editável correspondente ao PDF.
 - `artigos/resumo-expandido.md`: fonte textual atualizada.
-- `artigos/resumo-expandido.html`: fonte de geração dos artefatos editáveis.
+- `artigos/resumo-expandido.html`: fonte textual auxiliar com o conteúdo do trabalho.
+- `artigos/template-congresso-unisenai.docx`: template oficial preservado para futuras edições.
 
 ## Etapas posteriores
 
