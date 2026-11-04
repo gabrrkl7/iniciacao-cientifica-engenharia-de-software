@@ -13,6 +13,8 @@
 - **Título:** Arquitetura Cloud-Native para Sistemas Escaláveis: integração de microsserviços, serverless e observabilidade.
 - **Contribuição:** proposta arquitetural documentada que relaciona requisitos não funcionais a componentes, tecnologias, riscos e verificações futuras.
 - **Status:** rascunho de cinco páginas para revisão acadêmica; não submetido. O anexo de 2024 recomenda 10 a 20 páginas, portanto o comprimento precisa ser confirmado com os orientadores e com a chamada atual. Não ampliei o texto com conteúdo sem evidência. Não há comprovante ou protocolo de submissão.
+- **Arquivo editável:** [`manuscrito/resumo-expandido-rex.docx`](manuscrito/resumo-expandido-rex.docx).
+- **Arquivo PDF:** [`manuscrito/resumo-expandido-rex.pdf`](manuscrito/resumo-expandido-rex.pdf), convertido a partir do arquivo editável para revisão.
 - **Uso de IA:** este texto foi preparado com assistência de ChatGPT/OpenAI. A política vigente deve ser aplicada pelos autores antes de qualquer submissão; o manuscrito não está declarado pronto para publicação.
 
 ## Nota de consistência bibliográfica

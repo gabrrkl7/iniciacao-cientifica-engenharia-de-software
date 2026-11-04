@@ -26,6 +26,7 @@ README.md
 - `diagramas/arquitetura/diagrama-mermaid.md`: diagrama em Mermaid com visão contextual, de containers, fluxo, escalabilidade, segurança e CI/CD.
 - `referencias/bibliografia/REFERENCIAS-ABNT.md`: referências acadêmicas e técnicas em formato ABNT.
 - `publicacao/tarefa07-congresso.md`: registro da Tarefa 07, checklist de prazos e mensagem para revisão.
+- `publicacao/tarefa09-contecsi/README.md`: organização da Tarefa 09, modalidade REX, referências consultadas e pendências de submissão.
 - `artigos/resumo-expandido.pdf`: resumo expandido preparado para o III Congresso UniSENAI-SP.
 - `artigos/resumo-expandido.docx`: versão editável do resumo expandido.
 - `artigos/resumo-expandido.md`: fonte textual do resumo expandido.
