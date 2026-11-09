@@ -12,7 +12,9 @@
 ## Manuscrito
 - **Título:** Arquitetura Cloud-Native para Sistemas Escaláveis: integração de microsserviços, serverless e observabilidade.
 - **Contribuição:** proposta arquitetural documentada que relaciona requisitos não funcionais a componentes, tecnologias, riscos e verificações futuras.
-- **Status:** manuscrito de 7 páginas A4, preparado para revisão acadêmica e ainda não submetido. O texto distingue decisões de projeto de resultados experimentais e não apresenta medições que ainda não foram realizadas. Não há comprovante ou protocolo de submissão.
+- **Status:** manuscrito de 8 páginas A4, revisado após os comentários do professor e ainda não submetido. O texto distingue decisões de projeto de resultados experimentais e não apresenta medições que ainda não foram realizadas. Não há comprovante ou protocolo de submissão.
+- **Correções incorporadas:** identificação do 21st CONTECSI, pergunta de pesquisa delimitada, protocolo transparente de seleção bibliográfica, comparação dos trabalhos relacionados, derivação dos critérios de decisão, diagrama arquitetural inserido no texto, métricas e critérios de aceitação preliminares, conclusões restritas às evidências documentais e referências técnicas revisadas.
+- **Diagrama incluído:** [diagrama-cloud-native.svg](../../diagramas/arquitetura/diagrama-cloud-native.svg) e [diagrama-cloud-native.png](../../diagramas/arquitetura/diagrama-cloud-native.png), citados como Figura 1 no manuscrito.
 - **Arquivo editável:** [`manuscrito/resumo-expandido-rex.docx`](manuscrito/resumo-expandido-rex.docx).
 - **PDF de conferência:** [`manuscrito/Gabriel_Ribeiro_de_Camargo_Miranda_CONTECSI.pdf`](manuscrito/Gabriel_Ribeiro_de_Camargo_Miranda_CONTECSI.pdf), cópia para leitura e entrega da atividade. Para submissão, confirmar se a modalidade REX vigente aceita PDF; o DOCX é o arquivo editável primário.
 - **PDF compatível:** [`manuscrito/resumo-expandido-rex.pdf`](manuscrito/resumo-expandido-rex.pdf), mesma versão do PDF de conferência, mantido no caminho anterior para não quebrar referências existentes.

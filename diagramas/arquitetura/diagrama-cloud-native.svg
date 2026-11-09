@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="850" viewBox="0 0 1600 850">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#183b56"/>
+    </marker>
+    <style>
+      .title { font: 700 30px Arial, sans-serif; fill: #102a43; }
+      .group { font: 700 22px Arial, sans-serif; fill: #243b53; }
+      .label { font: 700 20px Arial, sans-serif; fill: #102a43; }
+      .small { font: 16px Arial, sans-serif; fill: #486581; }
+      .box { fill: #f5f7fa; stroke: #486581; stroke-width: 2; }
+      .edge { stroke: #183b56; stroke-width: 3; fill: none; marker-end: url(#arrow); }
+      .dashed { stroke-dasharray: 10 8; }
+    </style>
+  </defs>
+  <rect width="1600" height="850" fill="#ffffff"/>
+  <text x="800" y="48" text-anchor="middle" class="title">Arquitetura cloud-native proposta</text>
+
+  <rect x="40" y="100" width="1520" height="230" rx="22" fill="#eef6fb" stroke="#7b8794" stroke-width="2"/>
+  <text x="70" y="135" class="group">Entrada e identidade</text>
+  <rect x="80" y="175" width="200" height="90" rx="14" class="box"/>
+  <text x="180" y="215" text-anchor="middle" class="label">Usuario</text>
+  <text x="180" y="242" text-anchor="middle" class="small">Navegador</text>
+  <rect x="350" y="175" width="220" height="90" rx="14" class="box"/>
+  <text x="460" y="215" text-anchor="middle" class="label">CloudFront</text>
+  <text x="460" y="242" text-anchor="middle" class="small">CDN e HTTPS</text>
+  <rect x="640" y="175" width="220" height="90" rx="14" class="box"/>
+  <text x="750" y="215" text-anchor="middle" class="label">S3</text>
+  <text x="750" y="242" text-anchor="middle" class="small">Front-end estatico</text>
+  <rect x="930" y="175" width="250" height="90" rx="14" class="box"/>
+  <text x="1055" y="215" text-anchor="middle" class="label">API Gateway</text>
+  <text x="1055" y="242" text-anchor="middle" class="small">Entrada e limites</text>
+  <rect x="1250" y="175" width="230" height="90" rx="14" class="box"/>
+  <text x="1365" y="215" text-anchor="middle" class="label">Cognito</text>
+  <text x="1365" y="242" text-anchor="middle" class="small">Identidade e tokens</text>
+  <path d="M 280 220 L 350 220" class="edge"/>
+  <path d="M 570 220 L 640 220" class="edge"/>
+  <path d="M 860 220 L 930 220" class="edge dashed"/>
+  <path d="M 1180 220 L 1250 220" class="edge dashed"/>
+
+  <rect x="40" y="380" width="1520" height="210" rx="22" fill="#f5f7fa" stroke="#7b8794" stroke-width="2"/>
+  <text x="70" y="415" class="group">Processamento e comunicacao</text>
+  <rect x="110" y="455" width="250" height="90" rx="14" class="box"/>
+  <text x="235" y="495" text-anchor="middle" class="label">Lambda</text>
+  <text x="235" y="522" text-anchor="middle" class="small">APIs curtas e eventos</text>
+  <rect x="470" y="455" width="290" height="90" rx="14" class="box"/>
+  <text x="615" y="495" text-anchor="middle" class="label">ECS / Fargate</text>
+  <text x="615" y="522" text-anchor="middle" class="small">Servicos de dominio</text>
+  <rect x="870" y="455" width="230" height="90" rx="14" class="box"/>
+  <text x="985" y="495" text-anchor="middle" class="label">SQS / SNS</text>
+  <text x="985" y="522" text-anchor="middle" class="small">Filas e eventos</text>
+  <rect x="1210" y="455" width="240" height="90" rx="14" class="box"/>
+  <text x="1330" y="495" text-anchor="middle" class="label">CI/CD e ECR</text>
+  <text x="1330" y="522" text-anchor="middle" class="small">Entrega de imagens</text>
+  <path d="M 1055 265 C 1055 330 235 330 235 455" class="edge"/>
+  <path d="M 1055 265 C 1055 340 615 340 615 455" class="edge"/>
+  <path d="M 360 500 L 470 500" class="edge"/>
+  <path d="M 760 500 L 870 500" class="edge"/>
+  <path d="M 1100 500 L 1210 500" class="edge dashed"/>
+
+  <rect x="40" y="640" width="1520" height="160" rx="22" fill="#eef6fb" stroke="#7b8794" stroke-width="2"/>
+  <text x="70" y="675" class="group">Dados e observabilidade</text>
+  <rect x="150" y="705" width="260" height="65" rx="14" class="box"/>
+  <text x="280" y="745" text-anchor="middle" class="label">RDS PostgreSQL</text>
+  <rect x="520" y="705" width="220" height="65" rx="14" class="box"/>
+  <text x="630" y="745" text-anchor="middle" class="label">DynamoDB</text>
+  <rect x="850" y="705" width="290" height="65" rx="14" class="box"/>
+  <text x="995" y="745" text-anchor="middle" class="label">CloudWatch / X-Ray</text>
+  <rect x="1250" y="705" width="230" height="65" rx="14" class="box"/>
+  <text x="1365" y="745" text-anchor="middle" class="label">Alertas</text>
+  <path d="M 235 545 C 235 620 280 620 280 705" class="edge"/>
+  <path d="M 615 545 C 615 620 630 620 630 705" class="edge"/>
+  <path d="M 235 545 C 235 610 995 610 995 705" class="edge dashed"/>
+  <path d="M 615 545 C 615 620 995 620 995 705" class="edge dashed"/>
+  <path d="M 1140 737 L 1250 737" class="edge"/>
+</svg>
